@@ -1,7 +1,22 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { getSortedPostsData } from '../utils/posts';
+
+const allPosts = await Astro.glob('../pages/blog/*.md');
 ---
 
 <Layout title="Blog">
-  <h1 class="text-center">Welcome to <span class="text-gradient">Blog</span></h1>
+  <div class="text-slate-700 flex grow-0 w-full flex-col p-2 gap-2">
+    {
+      allPosts.map((post) => (
+        <div class="flex flex-col rounded-md bg-slate-100 border border-slate-300 p-3 gap-2">
+          <a class="font-bold" href={post.url}>
+            {post.frontmatter.title}
+          </a>
+          <small>{post.frontmatter.description}</small>
+          <small class="font-light">{post.frontmatter.date}</small>
+        </div>
+      ))
+    }
+  </div>
 </Layout>
