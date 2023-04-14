@@ -1,6 +1,6 @@
 ---
 export interface Props {
-	title: string;
+  title: string;
 }
 
 const { title } = Astro.props;
@@ -8,28 +8,51 @@ const { title } = Astro.props;
 
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <main
+      class="overflow-hidden flex items-center flex-col h-screen bg-gradient-to-r from-slate-300 via-slate-50 to-slate-300"
+    >
+      <nav
+        class="flex w-full items-center shrink-0 grow-0 h-10 justify-center bg-slate-700 border-b border-slate-600"
+      >
+        <div class="font-semibold flex gap-4 w-full p-2 md:max-w-2xl">
+          <a href="/">
+            <span>Home</span>
+          </a>
+          <a href="/blog">
+            <span>Blog</span>
+          </a>
+          <a href="/big-data">
+            <span>Big Data</span>
+          </a>
+        </div>
+      </nav>
+      <div
+        class="overflow-y-auto scrollbar-thin scrollbar-thumb-slate-500 scrollbar-thumb-rounded-md scrollbar-track-slate-300 flex justify-self-center shadow-xl w-full flex flex-grow bg-slate-200 md:border-x md:border-slate-300 md:max-w-2xl"
+      >
+        <slot />
+      </div>
+    </main>
+  </body>
 </html>
 <style is:global>
-	:root {
-		--accent: 124, 58, 237;
-		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #da62c4 30%, white 60%);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background-color: #F6F6F6;
-	}
-	code {
-		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-			Bitstream Vera Sans Mono, Courier New, monospace;
-	}
+  :root {
+    --accent: 124, 58, 237;
+    --accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #da62c4 30%, white 60%);
+  }
+  html {
+    font-family: system-ui, sans-serif;
+    background-color: #f6f6f6;
+  }
+  code {
+    font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
+      Bitstream Vera Sans Mono, Courier New, monospace;
+  }
 </style>
