@@ -1,0 +1,33 @@
+---
+import people from '../../../../public/big-data.json'
+import Layout from '../../../layouts/Layout.astro'
+
+const { id } = Astro.params
+if (!id) {
+  return Astro.redirect('/404')
+}
+const person = people.find((person) => {
+  return person.id === parseInt(id)
+})
+if (!person) {
+  return Astro.redirect('/404')
+}
+---
+
+<Layout title='Person Data'>
+  <div class='flex h-max w-full flex-col gap-3 bg-slate-600 p-4'>
+    <span
+      ><span class='rounded-md bg-slate-500 p-1 font-semibold text-slate-800'>Full Name</span>
+      {person.first_name}
+      {person.last_name}</span
+    >
+    <span
+      ><span class='rounded-md bg-slate-500 p-1 font-semibold text-slate-800'>Email</span>
+      {person.email}</span
+    >
+    <span
+      ><span class='rounded-md bg-slate-500 p-1 font-semibold text-slate-800'>Gender</span>
+      {person.gender}</span
+    >
+  </div>
+</Layout>

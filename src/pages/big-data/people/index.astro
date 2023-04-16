@@ -1,0 +1,22 @@
+---
+import Layout from '../../../layouts/Layout.astro'
+import people from '../../../../public/big-data.json'
+---
+
+<Layout title='People Big Data'>
+  <div class="flex flex-wrap justify-evenly">
+    {people.map((person) => {
+      return (
+        <a href={Astro.url.pathname + '/' + person.id}>
+          <div class="mt-2 flex w-48 rounded-md bg-slate-600 p-2">
+            <span class="text-sm font-semibold">
+              {person.first_name}
+              {person.last_name}
+            </span>
+            <span class="ml-auto text-xs text-slate-400">{person.id}</span>
+          </div>
+        </a>
+      )
+    })}
+  </div>
+</Layout>
