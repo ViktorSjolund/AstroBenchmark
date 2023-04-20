@@ -1,12 +1,12 @@
 ---
-import Layout from '../layouts/Layout.astro';
-const { frontmatter } = Astro.props;
+import Layout from '../layouts/Layout.astro'
+const { frontmatter } = Astro.props
 ---
 
 <Layout title={frontmatter.title}>
-  <article class="flex flex-col w-full overflow-x-clip items-center center text-slate-800 p-2">
+  <article class="center flex w-full flex-col items-center overflow-x-clip p-2 text-slate-800">
     <h1 class="text-4xl font-bold">{frontmatter.title}</h1>
     <div class="py-6">{frontmatter.date}</div>
-    <div class="flex flex-col items-center w-full prose pb-20"><slot /></div>
+    <div class="prose flex w-full flex-col items-center pb-20"><slot /></div>
   </article>
 </Layout>
